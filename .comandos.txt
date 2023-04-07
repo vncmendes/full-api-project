@@ -1,0 +1,9 @@
+{ 
+npm install typescript
+npm install -D @types/node
+}
+npx executa pacotes binários
+npx tsc server.ts // converte o arquivo TS para JS, o node não entende ts diretamente.
+
+npm install tsx -D // instala o tsx, para não precisar fazer a conversão manual sempre com o comando npm tsc 'nome do arquivo' => src/server.ts // rodar só em desenvolvimento.
+executando o tsx: npx tsx src/server.ts
