@@ -7,3 +7,8 @@ npx tsc server.ts // converte o arquivo TS para JS, o node não entende ts diret
 
 npm install tsx -D // instala o tsx, para não precisar fazer a conversão manual sempre com o comando npm tsc 'nome do arquivo' => src/server.ts // rodar só em desenvolvimento.
 executando o tsx: npx tsx src/server.ts
+
+
+npm i eslint @rocketseat/eslint-config -D
+criando script: "lint": "eslint src --ext .ts --fix" --fix com o fix ele corrigi direto.
+ctrl + shift + p: setting, pra ver as configurações do editor, eslint, prettier etc.
