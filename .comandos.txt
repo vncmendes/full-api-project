@@ -12,3 +12,5 @@ executando o tsx: npx tsx src/server.ts
 npm i eslint @rocketseat/eslint-config -D
 criando script: "lint": "eslint src --ext .ts --fix" --fix com o fix ele corrigi direto.
 ctrl + shift + p: setting, pra ver as configurações do editor, eslint, prettier etc.
+
+npm install knex sqlite3 - query builder e o banco respectivo.
