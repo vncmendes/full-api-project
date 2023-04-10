@@ -14,3 +14,6 @@ criando script: "lint": "eslint src --ext .ts --fix" --fix com o fix ele corrigi
 ctrl + shift + p: setting, pra ver as configurações do editor, eslint, prettier etc.
 
 npm install knex sqlite3 - query builder e o banco respectivo.
+
+npm run knex -- migrate:make create-transactions - cria a migrate create-tran...
+npm run knex --migrate:lastest //cria o banco com as tabelas do configuradas no arquivo.
