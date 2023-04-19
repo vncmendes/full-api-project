@@ -4,7 +4,9 @@ import { transactionsRoutes } from './routes/transactions'
 
 const server = fastify()
 
-server.register(transactionsRoutes) // lembrar que precisa respeitar a ordem das rotas
+server.register(transactionsRoutes, {
+  prefix: 'transactions',
+}) // lembrar que precisa respeitar a ordem das rotas
 
 server
   .listen({
