@@ -4,6 +4,23 @@ import { knex } from '../database'
 import { randomUUID } from 'node:crypto'
 
 export async function transactionsRoutes(server: FastifyInstance) {
+  server.get('/', async () => {
+    const transactions = await knex('transactions').select()
+
+    return { transactions }
+  })
+
+  server.get('/:id', async (request) => {
+    const getTransactionParamsSchema = z.object({
+      id: z.string().uuid(),
+    })
+    const { id } = getTransactionParamsSchema.parse(request.params)
+
+    const transaction = await knex('transactions').where('id', id).first()
+
+    return { transaction }
+  })
+
   server.post('/', async (request, reply) => {
     const createTransactionBodySchema = z.object({
       title: z.string(),
@@ -16,7 +33,7 @@ export async function transactionsRoutes(server: FastifyInstance) {
     )
     // em rotas de criação geralmente não se faz retornos, usasse os HTTP Codes. (201) etc.
     await knex('transactions').insert({
-      id: randomUUID,
+      id: randomUUID(),
       title,
       amount: type === 'credit' ? amount : amount * -1,
     })
