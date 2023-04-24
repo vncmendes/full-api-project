@@ -6,7 +6,15 @@ import { knex } from '../database'
 // Cookies <-> são formas da gente manter contexto entre requisições.
 
 export async function transactionsRoutes(server: FastifyInstance) {
-  server.get('/', async () => {
+  server.get('/', async (request, reply) => {
+    const sessionId = request.cookies.sessionId
+
+    if (!sessionId) {
+      return reply.status(401).send({
+        error: 'Unauthorized',
+      })
+    }
+
     const transactions = await knex('transactions').select()
 
     return { transactions }
