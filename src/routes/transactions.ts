@@ -7,6 +7,10 @@ import { checkIfSessionIdExists } from '../middlewares/check-if-session-id-exist
 // Cookies <-> são formas da gente manter contexto entre requisições.
 
 export async function transactionsRoutes(server: FastifyInstance) {
+  server.addHook('preHandler', async (request, reply) => {
+    console.log(`${request.method} ${request.url}`)
+  })
+
   server.get(
     '/',
     {

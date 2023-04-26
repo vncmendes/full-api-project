@@ -1,6 +1,6 @@
 // d . ts - definição de tipos
 
-// eslint disable next line
+// eslint-disable-next-line
 import { Knex } from 'knex'
 
 declare module 'knex/types/tables' {
