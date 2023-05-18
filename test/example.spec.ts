@@ -18,3 +18,27 @@ test('Its possible to create a new transactions?', async () => {
   })
   expect(201)
 })
+
+test('should be able to list all transactions', async () => {
+  const createTransactionsResponse = await requestest(app.server)
+    .post('/transactions')
+    .send({
+      title: 'New Transaction',
+      amount: 5000,
+      type: 'credit',
+    })
+
+  const cookies = createTransactionsResponse.get('Set-Cookie')
+
+  const listTransactionsResponse = await requestest(app.server)
+    .get('/transactions')
+    .set('Cookie', cookies)
+    .expect(200)
+
+  expect(listTransactionsResponse.body.transactions).toEqual([
+    expect.objectContaining({
+      title: 'New Transaction',
+      amount: 5000,
+    }),
+  ])
+})
